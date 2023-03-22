@@ -1,0 +1,23 @@
+
+
+no terminal da pasta:
+    npx react-native init crudApp
+    
+    2 comandos juntos:
+    npm start
+    npx react-native run-android
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
