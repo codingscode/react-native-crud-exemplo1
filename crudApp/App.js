@@ -1,23 +1,28 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
 
 
 
+
 const App = () => {
+   const [list, setList] = useState([])
    
    useEffect(() => {
       getListTeacher()
    }, [])
 
 
-   const getListTeacher = () => {
-      fetch('https://nodejs-course-g2.vercel.app/api/teacher', {
+   const getListTeacher = async () => {
+      await fetch('https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json', {  // 'https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json/list'
          method: 'GET'
       }).then(res => {
+         console.log('res', res)
          return res.json()
       }).then(res => {
-         console.log(res)
+         if (res) {
+            setList(res.list)
+         }
       }).catch(err => {
          console.log(err)
       })
@@ -26,7 +31,7 @@ const App = () => {
   
    return (
       <SafeAreaView >
-         <Text style={styles.txtMain} >Lista Professor</Text>
+         <Text style={styles.txtMain} >Lista Professor {list.length}</Text>
       </SafeAreaView> 
    )
 }
@@ -40,45 +45,3 @@ const styles = StyleSheet.create({
 })
 
 export default App
-
-
-/*
-{
-   "list": [
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null },
-      { "teacher_id": 3, "firstname": "Jon", "lastname": "Sina", "gender": 1, "tel": "09999999", "email": "sina@gmail.com", "description": null }
-   
-   ]
-}
-
-
-npm install -g json-server
-json-server --watch db.json
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-

@@ -21,6 +21,57 @@ na pasta backend:
 
    """
 
+https://www.npmjs.com/package/json-server
+
+https://stackoverflow.com/questions/38418998/react-native-fetch-network-request-failed
+
+https://github.com/facebook/react-native/issues/32931
+
+
+json-server --watch db.json
+
+
+
+ver https://github.com/facebook/react-native/issues/32931
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
