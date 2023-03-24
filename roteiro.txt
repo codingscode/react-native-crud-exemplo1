@@ -8,6 +8,19 @@ no terminal da pasta:
     npx react-native run-android
 
 
+na pasta backend:
+   npm install -g json-server
+   json-server --watch db.json
+
+   """
+   Resources
+   http://localhost:3000/list
+
+   Home
+   http://localhost:3000
+
+   """
+
 
 
 
