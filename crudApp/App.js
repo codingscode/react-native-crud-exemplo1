@@ -17,7 +17,6 @@ const App = () => {
       await fetch('https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json', {  // 'https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json/list'
          method: 'GET'
       }).then(res => {
-         console.log('res', res)
          return res.json()
       }).then(res => {
          if (res) {
@@ -32,6 +31,20 @@ const App = () => {
    return (
       <SafeAreaView >
          <Text style={styles.txtMain} >Lista Professor {list.length}</Text>
+         <ScrollView>
+            {list.map((item, index) => {
+               return (
+                  <View key={index} >
+                     <Text>{item.firstname}</Text>
+                     <Text>{item.lastname}</Text>
+                     <Text>{item.gender}</Text>
+                     <Text>{item.tel}</Text>
+                     <Text>{item.email}</Text>
+                     <Text>{item.description}</Text>
+                  </View>
+               )
+            })}
+         </ScrollView>
       </SafeAreaView> 
    )
 }
