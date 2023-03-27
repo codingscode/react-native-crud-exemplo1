@@ -35,13 +35,24 @@ json-server --watch db.json
 ver https://github.com/facebook/react-native/issues/32931
 
 
+observar
+serv localhost:
+https://www.sitepoint.com/accessing-localhost-from-anywhere/
+https://serverfault.com/questions/979505/cannot-access-my-website-over-lan-network-or-localhost
+https://github.com/coder/code-server/discussions/4524
+https://www.quora.com/How-do-I-access-my-local-host-web-application-website-from-other-computers-through-the-internet-which-is-not-in-my-LAN
+https://www.youtube.com/watch?v=765cxF_N98s
+https://chenhuijing.com/blog/tunnelling-services-for-exposing-localhost-to-the-web/
+https://howchoo.com/g/mte2zgrhmjf/how-to-access-a-website-running-on-localhost-from-a-mobile-phone
+https://www.hostinger.com.br/tutoriais/erro-connection-refused
 
 
 
+npm install -g localtunnel
 
+lt --port 8000
 
-
-
+obs: esperar um tempo 20s
 
 
 

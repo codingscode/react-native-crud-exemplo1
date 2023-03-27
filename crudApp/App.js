@@ -4,6 +4,11 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity } fr
 
 
 
+// https://nodejs-course-g2.vercel.app/api/teacher
+// https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json
+// https://platypusestunneltoo.loca.lt/list
+
+
 
 const App = () => {
    const [list, setList] = useState([])
@@ -14,13 +19,17 @@ const App = () => {
 
 
    const getListTeacher = async () => {
-      await fetch('https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json', {  // 'https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json/list'
-         method: 'GET'
+      await fetch('https://platypusestunneltoo.loca.lt/list', {  // 'https://raw.githubusercontent.com/codingscode/react-native-crud-exemplo1/master/backend/db.json'
+         method: 'GET',
+         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+         }
       }).then(res => {
          return res.json()
       }).then(res => {
          if (res) {
-            setList(res.list)
+            setList(res)//setList(res.list)
          }
       }).catch(err => {
          console.log(err)
@@ -28,7 +37,25 @@ const App = () => {
       
    }
 
-   const handleRemove = () => {
+   const handleRemove = async (item) => {
+      await fetch('https://platypusestunneltoo.loca.lt/list', { //await fetch('https://platypusestunneltoo.loca.lt/list', {
+         method: 'DELETE',
+         body: JSON.stringify({
+            teacher_id: item.teacher_id
+         }),
+         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+         }
+      }).then(res => {
+         return res.json()
+      }).then(res => {
+         console.log(res)
+         getListTeacher()
+      })
+      .catch(err=> {
+         console.log(err)
+      })
       
    }
 
@@ -41,8 +68,8 @@ const App = () => {
          }} >
             {list.map((item, index) => {
                return (
-                  <View style={styles.rowBetween} >
-                     <View style={styles.item} key={index} >
+                  <View key={index} style={styles.rowBetween} >
+                     <View style={styles.item} >
                         <Text style={styles.txtName} >{item.firstname}-{item.lastname}</Text>
                         <Text style={styles.txtNormal} >{item.gender == 1 ? 'Male' : 'Female'}</Text>
                         <Text style={styles.txtNormal} >{item.tel}</Text>
@@ -94,3 +121,5 @@ const styles = StyleSheet.create({
 })
 
 export default App
+
+
